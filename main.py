@@ -1,6 +1,5 @@
 import forca as fc
 import time
-import openai_module
 
 palavras_forca = fc.palavras_forca
 NUM_MAX_ERRO = 5

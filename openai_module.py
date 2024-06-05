@@ -2,12 +2,11 @@
 
 from openai import OpenAI
 from dotenv import load_dotenv
-import key
 
 load_dotenv()
-openia_key = key.OPENAI_API_KEY
+openia_key = input('Insira sua chave openAI para continuar: ')
 
-client = OpenAI(api_key=openia_key)
+client = OpenAI(api_key = openia_key)
 
 def escolha_palavra():
     caracteres = input("Quantos caracteres você deseja? ")
@@ -30,7 +29,7 @@ def escolha_palavra():
     palavras_usadas_string = ", ".join(palavras_usadas)
 
     prompt = [{"role": "user",
-               "content": f"Gere uma palavra para mim com {caracteres} caracteres, no idioma {idioma}, com letras minusculas, sem acentuação, para um jogo da força em nivel {dificuldade}. Essa palavra não pode ser uma dessas: {palavras_usadas_string}. Só responda com a palavra."}]
+               "content": f"Gere uma palavra para mim com exatamente {caracteres} caracteres, no idioma {idioma}, com letras minusculas, sem acentuação, para um jogo da força em nivel {dificuldade}. Essa palavra não pode ser uma dessas: {palavras_usadas_string}. Só responda com a palavra."}]
 
     response = client.chat.completions.create(
         messages=prompt,
