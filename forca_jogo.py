@@ -1,7 +1,8 @@
 import forca as fc
 import time
+import openai_module
 
-palavras_forca = ['adrielson', 'algoritmo', 'programacao']
+palavras_forca = fc.palavras_forca
 NUM_MAX_ERRO = 5
 palavra = fc.escolha_palavra()
 caracteres_usados = []
@@ -34,3 +35,4 @@ while num_erro < NUM_MAX_ERRO:
             print("Palavra errada!")
             time.sleep(1)
             num_erro += 1
+fc.mensagem_de_derrota()

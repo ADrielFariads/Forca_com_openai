@@ -4,8 +4,10 @@ Módulo com as funções básicas do aplicativo
 
 import os
 
+import openai_module
+
 # Entrada
-palavras_forca = ['adrielson', 'algoritmo', 'programacao']
+palavras_forca = [openai_module.escolha_palavra(), 'algoritmo', 'programacao']
 
 NUM_MAX_ERRO = 5
 
