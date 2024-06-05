@@ -1,7 +1,6 @@
 # funcoes que pedem a palavra ao ChatGPT
 
 from openai import OpenAI
-import os
 from dotenv import load_dotenv
 import key
 
@@ -12,9 +11,10 @@ client = OpenAI(api_key=openia_key)
 
 
 def escolha_palavra():
-    caracteres = input("Quantos caracteres você deseja?")
+    caracteres = input("Quantos caracteres você deseja? ")
     idioma = input("Qual idioma? ")
     dificuldade = input("Dificuldade: (0) Facil (1) Medio (2) Dificil ")
+    
     if dificuldade == 0:
         dificuldade = "facil"
     elif dificuldade == 1:
@@ -23,7 +23,7 @@ def escolha_palavra():
         dificuldade = "dificil"
 
     prompt = [{"role": "user",
-               "content": f"Gere uma palavra pra mim com {caracteres} caracteres, em {idioma} e em letras minusculas para um jogo da força em nivel {dificuldade}"}]
+               "content": f"Gere uma palavra para mim com {caracteres} caracteres, no idioma {idioma}, com letras minusculas, sem acentuação, para um jogo da força em nivel {dificuldade}"}]
 
     response = client.chat.completions.create(
         messages=prompt,
