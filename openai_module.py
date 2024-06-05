@@ -9,7 +9,6 @@ openia_key = key.OPENAI_API_KEY
 
 client = OpenAI(api_key=openia_key)
 
-
 def escolha_palavra():
     caracteres = input("Quantos caracteres você deseja? ")
     idioma = input("Qual idioma? ")
@@ -22,8 +21,16 @@ def escolha_palavra():
     else:
         dificuldade = "dificil"
 
+    palavras_usadas = []
+
+    with open('palavras_usadas.txt', 'r') as arquivo:
+        for palavra in arquivo:
+            palavras_usadas.append(palavra)
+    
+    palavras_usadas_string = ", ".join(palavras_usadas)
+
     prompt = [{"role": "user",
-               "content": f"Gere uma palavra para mim com {caracteres} caracteres, no idioma {idioma}, com letras minusculas, sem acentuação, para um jogo da força em nivel {dificuldade}"}]
+               "content": f"Gere uma palavra para mim com {caracteres} caracteres, no idioma {idioma}, com letras minusculas, sem acentuação, para um jogo da força em nivel {dificuldade}. Essa palavra não pode ser uma dessas: {palavras_usadas_string}. Só responda com a palavra."}]
 
     response = client.chat.completions.create(
         messages=prompt,
@@ -32,4 +39,6 @@ def escolha_palavra():
         temperature=0
     )
 
+    with open('palavras_usadas.txt', 'a') as arquivo:
+        arquivo.write(response.choices[0].message.content + '\n')
     return response.choices[0].message.content
