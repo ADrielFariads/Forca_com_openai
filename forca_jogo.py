@@ -35,4 +35,6 @@ while num_erro < NUM_MAX_ERRO:
             print("Palavra errada!")
             time.sleep(1)
             num_erro += 1
-fc.mensagem_de_derrota()
+
+    if num_erro == NUM_MAX_ERRO:
+        fc.mensagem_de_derrota()
