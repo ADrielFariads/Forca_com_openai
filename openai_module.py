@@ -3,15 +3,16 @@
 from openai import OpenAI
 import os
 from dotenv import load_dotenv
+import key
 
 load_dotenv()
-openia_key = os.getenv("OPENAI_KEY")
+openia_key = key.OPENAI_API_KEY
 
 client = OpenAI(api_key=openia_key)
 
 
 def escolha_palavra():
-    caracteres = input("Quantos caracteres vc deseja?")
+    caracteres = input("Quantos caracteres você deseja?")
     idioma = input("Qual idioma? ")
     dificuldade = input("Dificuldade: (0) Facil (1) Medio (2) Dificil ")
     if dificuldade == 0:
