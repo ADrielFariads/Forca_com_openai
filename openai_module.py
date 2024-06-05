@@ -41,4 +41,5 @@ def escolha_palavra():
 
     with open('palavras_usadas.txt', 'a') as arquivo:
         arquivo.write(response.choices[0].message.content + '\n')
+        
     return response.choices[0].message.content
