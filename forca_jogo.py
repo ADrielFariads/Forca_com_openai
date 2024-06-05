@@ -25,6 +25,8 @@ while num_erro < NUM_MAX_ERRO:
 
             if tentativa in palavra:
                 caracteres_usados.append(tentativa)
+                if set(palavra).issubset(caracteres_usados):
+                    fc.mensagem_de_vitoria()
 
     elif len(tentativa) > 1:
         if tentativa == palavra:
