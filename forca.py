@@ -7,7 +7,7 @@ import os
 import openai_module
 
 # Entrada
-palavras_forca = [openai_module.escolha_palavra(), 'algoritmo', 'programacao']
+palavras_forca = [openai_module.escolha_palavra()]
 
 NUM_MAX_ERRO = 5
 
