@@ -28,6 +28,7 @@ def escolha_palavra():
     
     palavras_usadas_string = ", ".join(palavras_usadas)
 
+    # aqui o programa lerá as palavras contidas no palavras_usadas.txt e pedirá para o ChatGPT não sorteá-ls novamente
     prompt = [{"role": "user",
                "content": f"Gere uma palavra para mim com exatamente {caracteres} caracteres, no idioma {idioma}, com letras minusculas, sem acentuação, para um jogo da força em nivel {dificuldade}. Essa palavra não pode ser uma dessas: {palavras_usadas_string}. Só responda com a palavra."}]
 
@@ -38,6 +39,7 @@ def escolha_palavra():
         temperature=0
     )
 
+    # aqui o programa escreverá no palavras_usadas.txt a palavra sugerida
     with open('palavras_usadas.txt', 'a') as arquivo:
         arquivo.write(response.choices[0].message.content + '\n')
         
